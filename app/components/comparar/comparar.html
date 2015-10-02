@@ -1,0 +1,18 @@
+
+<div id="compara-funcionarios" class="fluid-container">
+    <div class="header-compara">
+        <h3 class="text-center bolder">COMPARACIÓN ENTRE SERVIDORES PÚBLICOS</h3>
+    </div>
+
+    <div class="container">
+        <div class="panel panel-default col-xs-6 col-sm-4 col-md-4" ng-repeat="f in funcionariosCompara">
+            <div class="panel-body text-center">
+                <h3><i class="fa fa-user icon-circle size-4"></i></h3>
+                <div class="funcionario-nombre">
+                    <a href="" class="bold">{{f.nombre + " " + f.apellido1 + " " + f.apellido2}}</a>
+                    <br/> {{f.puesto}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

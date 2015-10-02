@@ -1,0 +1,12 @@
+<div class="container">
+    <h3 class="text-center">Funcionarios</h3>
+    <h4 class="text-center">{{slcDependencia.dependecia}}</h4>
+    
+    <div class="list-group">
+        <div class="list-group-item" ng-repeat="f in funcionarios">
+            <a href="#">{{f.nombre + " " + f.apellido1 + " " + f.apellido2}}</a> <br/>
+            <b>Cargo: </b> {{f.cargo}} <br/>
+            {{f.email}}
+        </div>
+    </div>
+</div>

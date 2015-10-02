@@ -1,0 +1,79 @@
+<div id="home">
+
+    <div class="home-content-top">
+        <div class="map-container">
+            <a href="#/" class="close-arrow close-arrow-header" ng-show="!toggleAirplane" ng-click="toggleAirplane = !toggleAirplane"><img src="assets/img/flecha-down.png" alt=""></a>
+            <div class="jumbotron-c" ng-show="toggleAirplane">
+                <div class="content-airplane">
+                    <div class="text-airplane">
+                        <a href="/"><img src="assets/img/logosolo.png" alt="logo" class="logo"></a>
+                        <h1><strong>Viajes</strong>Claros</h1>
+                        <p>Conoce los gastos y resultados de los viajes de trabajo de todos los servidores públicos del IFAI.</p>
+                        <p class="total-viajes"><span count-to="{{totalViajes}}" value="0" duration="1" type="int"></span> viajes realizados en 2014 a 2015</p>
+                        <a href="#/" class="custom-button bordered animate-color" ng-click="toggleAirplane = !toggleAirplane">Ver mapa</a>
+                    </div>
+                    <a href="#/" class="close-arrow" ng-click="toggleAirplane = !toggleAirplane"><img src="assets/img/flecha-up.png" alt=""></a>
+                </div>
+            </div>
+            <leaflet center='mapCenter' width="100%" height="480px" class="map"></leaflet>
+        </div>
+        <div class="total-money gradient-blue">
+            <h1><span count-to="{{totalGastado}}" value="{{gasto_parcial}}" duration="1" currency-name='USD'></span></h1>
+            <p>Presupuesto gastado en viajes de trabajo durante <strong>2014</strong></p>
+        </div>
+    </div>
+
+    <div class="container home-graficas">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="col panel panel-default">
+                    <div class="panel-heading text-center"><h5>Los tres últimos viajes de <strong>{{slcDependencia.siglas}}</strong></h5></div>
+                    <div class="list-group">
+                        <div class="list-group-item clearfix" ng-repeat="f in tresViajes">
+                            <div class="col-sm-2">
+                                <h3><i class="fa fa-map-marker icon-circle size-4 gray"></i></h3>
+                            </div>
+                            <div class="col-sm-10">
+                                {{f.ciudad}}, <strong>{{f.pais}}</strong> <br/>
+                                <a href="#/">{{f.tema | limitTo: 50}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="col panel panel-default ">
+                    <div class="panel-heading text-center"><h5 class="text-center">Los tres servidores públicos con <strong>MAYOR GASTO</strong></h5></div>
+                    <div class="list-group">
+                        <div class="list-group-item clearfix" ng-repeat="f in tresServidores">
+                            <div class="col-sm-2">
+                                <h3><i class="fa fa-user icon-circle size-4 gray"></i></h3>
+                            </div>
+                            <div class="col-sm-10">
+                                <a href="#">{{f.nombre}}</a> <br/>
+                                {{f.puesto}} <br/>
+                                <span class="monto" count-to="{{f.monto}}" duration=".5" currency-name='USD'></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="col panel panel-default ">
+                    <div class="panel-heading text-center"><h5 class="text-center">Los tres servidores públicos con <strong>MÁS VIAJES</strong></h5></div>
+                    <div class="list-group">
+                        <div class="list-group-item clearfix" ng-repeat="f in tresServidoresViajes">
+                            <div class="col-sm-2">
+                                <h3><i class="fa fa-map-marker icon-circle size-4 gray"></i></h3>
+                            </div>
+                            <div class="col-sm-10">
+                                {{f.nombre}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
