@@ -8,7 +8,7 @@
                 <div class="form-group" ng-repeat="f in filtros">
                     <label for="{{f.nombrePropiedad}}">{{f.descripcion}}</label>
                     <div ng-switch on="f.tipoControl">
-                        <div ng-switch-when="texto">
+                        <div ng-switch-when="TEXT">
                             <input type="text" class="form-control" ng-model="f.json"/>
                         </div>
                         <div ng-switch-when="checkbox">
@@ -16,9 +16,9 @@
                                 <label><input type="checkbox" ng-model="j.value"> {{j.label}}</label> 
                             </div>
                         </div>
-                        <div ng-switch-when="catalogo">
+                        <div ng-switch-when="SELECT">
                             <select class="form-control" ng-model="f.json" 
-                                    ng-options="item.descripcion for item in f.catalogo track by item.id">
+                                    ng-options="item.valor for item in f.valoresLista track by item.codigo">
                                 <option value="">Selecciona..</option>
                             </select>
                         </div>

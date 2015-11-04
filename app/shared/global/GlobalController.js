@@ -22,9 +22,9 @@ myApp.controller('GlobalController', ['$scope', '$rootScope', '$log', '$location
     $scope.$watch(function() {
         return $rootScope.slcDependencia;
     }, function() {
-        GlobalService.getFuncionarios().then(function(d) {
-            $scope.funcionarios = d;
-        });
+//        GlobalService.getFuncionarios().then(function(d) {
+//            $scope.funcionarios = d;
+//        });
     }, true);
     
     /* Agregar el funcionario seleccionado en el comparador */

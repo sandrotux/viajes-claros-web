@@ -70,16 +70,15 @@ myApp.service('BuscadorService', ['$http', '$resource', 'config', '$log', functi
             obj.id = filtros[i].id;
             obj.comparador = filtros[i].comparador;
             obj.tipoControl = filtros[i].tipoControl;
-            obj.descripcion = filtros[i].descripcion;
-            if (obj.tipoControl === "catalogo" && typeof filtros[i].json !== "undefined" && filtros[i].json !== null && filtros[i].json !== "") {
-                console.log("json: "  + filtros[i].json);
-                obj.valor = filtros[i].json.descripcion;
-                obj.idValor = filtros[i].json.id;
+            obj.descripcion = filtros[i].campo;
+            if (obj.tipoControl === "SELECT" && typeof filtros[i].json !== "undefined" && filtros[i].json !== null && filtros[i].json !== "") {
+                obj.valor = filtros[i].json.valor;
+                //obj.idValor = filtros[i].json.id;
                 jsonFiltros = jsonFiltros.concat(obj);
-            } else if (obj.tipoControl === "texto" && typeof filtros[i].json !== "undefined" && filtros[i].json !== "") {
+            } else if (obj.tipoControl === "TEXT" && typeof filtros[i].json !== "undefined" && filtros[i].json !== "") {
                 obj.valor = filtros[i].json; //El valor se guarda directamente en la propiedad json
                 jsonFiltros = jsonFiltros.concat(obj);
-            } else if (obj.tipoControl === "calendario" && typeof filtros[i].json !== "undefined" 
+            } else if (obj.tipoControl === "DATE" && typeof filtros[i].json !== "undefined" 
                     && typeof filtros[i].json.date !== "undefined" && filtros[i].json !== null 
                     && filtros[i].json.date !== "") {
                 var d = filtros[i].json.date;
@@ -91,7 +90,6 @@ myApp.service('BuscadorService', ['$http', '$resource', 'config', '$log', functi
         }
         
         objBusqueda.parametros = jsonFiltros;
-        console.log(jsonFiltros);
         var promise = $http.post(url, objBusqueda).then(function (response) {
             return response.data;
         });
